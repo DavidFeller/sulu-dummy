@@ -1,6 +1,5 @@
 {
     "devDependencies": {
-        "@fullhuman/postcss-purgecss": "^1.2.0",
         "@symfony/webpack-encore": "^0.27.0",
         "autoprefixer": "^9.5.1",
         "bootstrap": "^4.3.1",
