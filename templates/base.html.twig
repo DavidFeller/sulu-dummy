@@ -15,35 +15,36 @@
         } %}
     {% endblock %}
 
-    {% block style %}{% endblock %}
+    {% block style %}
+        {{ encore_entry_script_tags('app') }}
+    {% endblock %}
 </head>
 <body>
     <header>
-        {% block header %}
-            <nav>
-                <ul>
-                    <li>
-                        <a href="{{ sulu_content_root_path() }}">Homepage</a>
-                    </li>
-
-                    {% for item in sulu_navigation_root_tree('main') %}
+        <div class="container">
+            {% block header %}
+                <nav>
+                    <ul>
                         <li>
-                            <a href="{{ sulu_content_path(item.url) }}"
-                               title="{{ item.title }}">{{ item.title }}</a>
+                            <a href="{{ sulu_content_root_path() }}">Homepage</a>
                         </li>
-                    {% endfor %}
-                </ul>
-            </nav>
-        {% endblock %}
+
+                        {% for item in sulu_navigation_root_tree('main') %}
+                            <li>
+                                <a href="{{ sulu_content_path(item.url) }}"
+                                   title="{{ item.title }}">{{ item.title }}</a>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                </nav>
+            {% endblock %}
+        </div>
     </header>
 
-    <form action="{{ path('sulu_search.website_search') }}" method="GET">
-        <input name="q" type="text" placeholder="Search"/>
-        <input type="submit" value="Go"/>
-    </form>
-
     <section id="content">
-        {% block content %}{% endblock %}
+        <div class="container">
+            {% block content %}{% endblock %}
+        </div>
     </section>
 
     <aside>
@@ -51,11 +52,15 @@
     </aside>
 
     <footer>
-        {% block footer %}
-            <p>Copyright {{ 'now'|date('Y') }} SULU</p>
-        {% endblock %}
+        <div class="container">
+            {% block footer %}
+                <p>Copyright {{ 'now'|date('Y') }} SULU</p>
+            {% endblock %}
+        </div>
     </footer>
 
-    {% block javascripts %}{% endblock %}
+    {% block javascripts %}
+        {{ encore_entry_link_tags('app') }}
+    {% endblock %}
 </body>
 </html>
